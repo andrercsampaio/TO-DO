@@ -120,6 +120,9 @@ async def deletar_tarefa(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Erro interno ao deletar tarefa."
         )
+    
+
+    
 # ==========================================
 # ROTAS FRONT - TAREFAS
 # ==========================================
