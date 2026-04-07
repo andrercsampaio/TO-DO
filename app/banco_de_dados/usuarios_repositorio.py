@@ -108,3 +108,14 @@ class UsuarioRepositorio:
                     email=linha[3]
                 )
             return None
+        
+    async def buscar_por_id(self, usuario_id: int) -> UsuarioResponse | None:
+        with self.db.conectar() as conexao:
+            cursor = conexao.cursor()
+            cursor.execute(
+                "SELECT id, nome_usuario, nome_completo, email FROM usuarios WHERE id = ?", (usuario_id,)
+            )
+            linha = cursor.fetchone()
+            if linha:
+                return UsuarioResponse(id=linha[0], nome_usuario=linha[1], nome_completo=linha[2], email=linha[3])
+            return None
